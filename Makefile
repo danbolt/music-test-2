@@ -16,10 +16,12 @@ CC  = gcc
 LD  = ld
 MAKEROM = mild
 
+NUAUDIOLIB = -lnualstl_n_d -ln_gmus_d -ln_gaudio_sc
+
 LCDEFS =	-DNU_DEBUG -DF3DEX_GBI_2
 LCINCS =	-I. -I$(NUSYSINCDIR) -I$(ROOT)/usr/include/PR
 LCOPTS =	-G 0
-LDFLAGS = $(MKDEPOPT) -L$(LIB) -L$(NUSYSLIBDIR) -lnusys_d -lgultra_d -L$(GCCDIR)/mipse/lib -lkmc
+LDFLAGS = $(MKDEPOPT) -L$(LIB) -L$(NUSYSLIBDIR) $(NUAUDIOLIB) -lnusys_d -lgultra_d -L$(GCCDIR)/mipse/lib -lkmc
 
 OPTIMIZER =	-g
 
@@ -29,7 +31,7 @@ TARGETS =	nu1.n64
 
 HFILES =	main.h graphic.h
 
-CODEFILES   = 	main.c stage00.c graphic.c gfxinit.c
+CODEFILES   = 	main.c stage00.c graphic.c gfxinit.c rom2ram.c
 
 CODEOBJECTS =	$(CODEFILES:.c=.o)  $(NUSYSLIBDIR)/nusys.o
 

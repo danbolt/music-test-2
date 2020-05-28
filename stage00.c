@@ -6,14 +6,21 @@
 
 #include <assert.h>
 #include <nusys.h>
+#include <nualstl_n.h>
 #include "main.h"
 #include "graphic.h"
+#include "audio.h"
+#include "rom2ram.h"
 
 static float theta;  /* The rotational angle of the square */
 static float triPos_x; /* The display position-X */
 static float triPos_y; /* The display position-Y */
 
+static musHandle seqHandle = 0;
+static musHandle sndHandle = 0;
+
 void shadetri(Dynamic* dynamicp);
+
 
 /* The initialization of stage 0 */
 void initStage00(void)
@@ -21,6 +28,16 @@ void initStage00(void)
   triPos_x = 0.0;
   triPos_y = 0.0;
   theta = 0.0;
+
+  // Read and register the sample bank and its pointers to memory.
+  Rom2Ram((void *)PBANK_START, (void *)ptr_buf, PBANK_END-PBANK_START);
+  MusPtrBankInitialize(ptr_buf, WBANK_START);
+
+  // Read the song
+  Rom2Ram((void *)MUSIC1_START, (void *)tune_buf, MUSIC1_END-MUSIC1_START);
+
+  // Play the song as soon as the stage starts
+  seqHandle = MusStartSong(tune_buf);
 }
 
 /* Make the display list and activate the task */

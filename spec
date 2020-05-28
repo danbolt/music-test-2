@@ -26,12 +26,38 @@ beginseg
 	include "$(ROOT)/usr/lib/PR/gspF3DEX2.fifo.o"
 	include "$(ROOT)/usr/lib/PR/gspL3DEX2.fifo.o"
 	include "$(ROOT)/usr/lib/PR/gspF3DEX2.Rej.fifo.o"
-        include "$(ROOT)/usr/lib/PR/gspF3DEX2.NoN.fifo.o"
-        include "$(ROOT)/usr/lib/PR/gspF3DLX2.Rej.fifo.o"
+    include "$(ROOT)/usr/lib/PR/gspF3DEX2.NoN.fifo.o"
+    include "$(ROOT)/usr/lib/PR/gspF3DLX2.Rej.fifo.o"
 	include "$(ROOT)/usr/lib/PR/gspS2DEX2.fifo.o"
+	include "$(ROOT)/usr/lib/PR/aspMain.o"
+	include "$(ROOT)/usr/lib/PR/n_aspMain.o"
 endseg
 
 beginwave
 	name	"nu1"
 	include	"code"
+	include "pbank"
+	include "wbank"
+	include "song1"
 endwave
+
+beginseg
+	name "pbank"
+	flags RAW
+	include "bgm/dm/song.ptr"
+endseg
+
+// Bank containing sound data
+beginseg
+	name "wbank"
+	flags RAW
+	include "bgm/dm/song.wbk"
+endseg
+
+// Music score
+beginseg
+	name "song1"
+	flags RAW
+	include "bgm/dm/song.bin"
+endseg
+
