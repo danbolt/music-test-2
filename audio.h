@@ -17,8 +17,4 @@ extern u8 _song1SegmentRomEnd[];
 extern u8 _sfxSegmentRomStart[];
 extern u8 _sfxSegmentRomEnd[];
 
-extern int ptr_buf[];
-extern int tune_buf[];
-extern int sfx_buf[];
-
 #endif /* AUDIO_H */

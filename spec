@@ -36,28 +36,5 @@ endseg
 beginwave
 	name	"nu1"
 	include	"code"
-	include "pbank"
-	include "wbank"
-	include "song1"
 endwave
-
-beginseg
-	name "pbank"
-	flags RAW
-	include "bgm/dm/song.ptr"
-endseg
-
-// Bank containing sound data
-beginseg
-	name "wbank"
-	flags RAW
-	include "bgm/dm/song.wbk"
-endseg
-
-// Music score
-beginseg
-	name "song1"
-	flags RAW
-	include "bgm/dm/song.bin"
-endseg
 
