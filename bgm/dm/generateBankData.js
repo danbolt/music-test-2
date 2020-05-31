@@ -95,7 +95,7 @@ sampleData.forEach((data) => {
 
 console.log('bank SongBank ');
 console.log('{');
-console.log('    sampleRate = 22050;');
+console.log('    sampleRate = 32000;');
 console.log('');
 
 const HIGHEST_MIDI_INSTURMENT_NUMBER = 127;
