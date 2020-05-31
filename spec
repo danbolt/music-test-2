@@ -33,6 +33,24 @@ beginseg
 	include "$(ROOT)/usr/lib/PR/n_aspMain.o"
 endseg
 
+beginseg
+    name "dm_bank"
+    flags RAW
+    include "bgm/dm/SongBank.ctl"
+endseg
+
+beginseg
+    name "dm_table"
+    flags RAW
+    include "bgm/dm/SongBank.tbl"
+endseg
+
+beginseg
+    name "dm_seq"
+    flags RAW
+    include "bgm/dm/song.sbk"  
+endseg
+
 beginwave
 	name	"nu1"
 	include	"code"

@@ -8,6 +8,7 @@
 
 #include <nusys.h>
 #include "main.h"
+#include "audio.h"
 
 #include <nualsgi_n.h>
 
@@ -27,6 +28,11 @@ u8 contPattern;		     /* The pattern connected to the controller  */
 int note;
 
 void soundSetup(void) {
+  /* Register the bank to the sequence player  */
+  nuAuSeqPlayerBankSet(_dm_bankSegmentRomStart, _dm_bankSegmentRomEnd - _dm_bankSegmentRomStart, _dm_tableSegmentRomStart);
+
+  /* Register MIDI sequence data to the sequence player */
+  nuAuSeqPlayerSeqSet(_dm_seqSegmentRomStart);
 }
 
 void initAudio(void)
@@ -46,6 +52,7 @@ void mainproc(void)
   nuGfxInit();
 
   initAudio();
+  soundSetup();
 
   /* The initialization of the controller manager  */
   contPattern = nuContInit();

@@ -9,7 +9,6 @@
 #include <nualsgi_n.h>
 #include "main.h"
 #include "graphic.h"
-#include "audio.h"
 #include "rom2ram.h"
 
 static float theta;  /* The rotational angle of the square */
@@ -19,7 +18,6 @@ static float triPos_y; /* The display position-Y */
 extern int note;
 
 void shadetri(Dynamic* dynamicp);
-
 
 /* The initialization of stage 0 */
 void initStage00(void)
@@ -91,11 +89,28 @@ void makeDL00(void)
   gfx_gtask_no ^= 1;
 }
 
+void soundCheck(void) {
+  static int seqNo = 0;
+
+  if((contdata[0].trigger & A_BUTTON)) {
+    if (seqNo == 0) {
+      nuAuSeqPlayerStop(0);
+      nuAuSeqPlayerSetNo(0, 0);
+      nuAuSeqPlayerPlay(0);
+
+      seqNo = 1;
+    }
+  }
+}
 
 /* The game progressing process for stage 0 */
 void updateGame00(void)
 {  
   static float vel = 1.0;
+
+  soundCheck();
+
+
 
   /* Data reading of controller 1 */
   nuContDataGetEx(contdata,0);
