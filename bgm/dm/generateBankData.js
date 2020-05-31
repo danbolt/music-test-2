@@ -72,8 +72,11 @@ const sampleData = sampleFilenames.map((fileName) => {
   result.midiInsturmentNumber = parseInt(fileName.split('_', 1)[0]);
   result.fileName = fileName;
   result.insturmentName = fileName.split('.')[0].replace(/\d*_/, '').replace(/\(/, '').replace(/\)/, '');
+  result.melodic = (result.insturmentName.split('_')[0] === 'Melodic');
 
-  midiNumberMapping[result.midiInsturmentNumber] = result;
+  if (result.melodic) {
+    midiNumberMapping[result.midiInsturmentNumber] = result;
+  }
 
   return result;
 });
@@ -81,16 +84,18 @@ const sampleData = sampleFilenames.map((fileName) => {
 console.log(DEFAULT_ENVELOPE);
 
 sampleData.forEach((data) => {
-   console.log(generateKeyMapData(data.insturmentName));
-   console.log(generateSoundData(data.insturmentName, data.fileName));
-   console.log(generateInsturmentData(data.insturmentName));
-
-
+  if (!(data.melodic)) {
+    return;
+  }
+  
+  console.log(generateKeyMapData(data.insturmentName));
+  console.log(generateSoundData(data.insturmentName, data.fileName));
+  console.log(generateInsturmentData(data.insturmentName));
 });
 
 console.log('bank SongBank ');
 console.log('{');
-console.log('    sampleRate = 32000;');
+console.log('    sampleRate = 22050;');
 console.log('');
 
 const HIGHEST_MIDI_INSTURMENT_NUMBER = 127;

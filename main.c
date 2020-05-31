@@ -10,6 +10,7 @@
 #include "main.h"
 #include "audio.h"
 
+
 #include <nualsgi_n.h>
 
 /* Declaration of the prototype  */
@@ -37,7 +38,7 @@ void soundSetup(void) {
 
 void initAudio(void)
 {
-    nuAuInit();
+    nuAuInitEx();
 
     // Register the PRENMI function.
     nuAuPreNMIFuncSet(nuAuPreNMIProc);
