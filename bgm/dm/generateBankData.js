@@ -39,7 +39,26 @@ const DEFAULT_KEYMAP_DATA = `keymap REPLACENAMEKeymap
     detune      = 0;
 }
 `;
-const generateKeyMapData = (name) => { return DEFAULT_KEYMAP_DATA.replace('REPLACENAME', name); }
+
+const DEFAULT_KEYMAP_DATA_SPECIFIC_KEY = `keymap REPLACENAMEKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = KMIN;
+    keyMax      = KMAX;
+    keyBase     = KBASE;
+    detune      = 0;
+}
+`;
+
+
+const generateKeyMapData = (name, specificKey) => {
+  if (specificKey !== undefined) {
+    return DEFAULT_KEYMAP_DATA_SPECIFIC_KEY.replace('REPLACENAME', name).replace('KMIN', specificKey).replace('KMAX', specificKey).replace('KBASE', specificKey);
+  }
+
+  return DEFAULT_KEYMAP_DATA.replace('REPLACENAME', name);
+}
 
 const DEFUALT_SOUND_DATA = `sound SOUND_NAME
 {
@@ -65,7 +84,8 @@ const generateInsturmentData = (name) => { return DEFAULT_INSTURMENT_DATA.replac
 
 const sampleFilenames = fs.readdirSync(SAMPLES_DIR, ENCODING);
 
-const midiNumberMapping = {};
+const melodicNumberMapping = {};
+const percussiveNumberMapping = {};
 const sampleData = sampleFilenames.map((fileName) => {
   const result = {};
 
@@ -75,7 +95,9 @@ const sampleData = sampleFilenames.map((fileName) => {
   result.melodic = (result.insturmentName.split('_')[0] === 'Melodic');
 
   if (result.melodic) {
-    midiNumberMapping[result.midiInsturmentNumber] = result;
+    melodicNumberMapping[result.midiInsturmentNumber] = result;
+  } else {
+    percussiveNumberMapping[result.midiInsturmentNumber] = result;
   }
 
   return result;
@@ -83,28 +105,50 @@ const sampleData = sampleFilenames.map((fileName) => {
 
 console.log(DEFAULT_ENVELOPE);
 
-sampleData.forEach((data) => {
-  if (!(data.melodic)) {
-    return;
-  }
-  
-  console.log(generateKeyMapData(data.insturmentName));
+const STANDARD_KIT_BEGIN = `instrument Percussion_Kit
+{
+    volume = 127;
+    pan    = 64;
+`
+const STANDARD_KIT_END = `}
+`;
+
+sampleData.forEach((data) => {  
+  console.log(generateKeyMapData(data.insturmentName, data.melodic ? undefined : data.midiInsturmentNumber));
   console.log(generateSoundData(data.insturmentName, data.fileName));
-  console.log(generateInsturmentData(data.insturmentName));
+
+  if (data.melodic) {
+    console.log(generateInsturmentData(data.insturmentName));
+  }
 });
+
+const LOWEST_PERCUSSION_NUMBER = 35;
+const HIGHEST_PERCUSSION_NUMBER = 82;
+console.log(STANDARD_KIT_BEGIN);
+
+for (let i = LOWEST_PERCUSSION_NUMBER; i <= HIGHEST_PERCUSSION_NUMBER; i++) {
+  if (percussiveNumberMapping[i] == undefined) {
+    continue;
+  }
+
+  console.log('    sound = ' + percussiveNumberMapping[i].insturmentName + 'Sound;');
+}
+
+console.log(STANDARD_KIT_END);
 
 console.log('bank SongBank ');
 console.log('{');
 console.log('    sampleRate = 32000;');
+console.log('    percussionDefault = Percussion_Kit;');
 console.log('');
 
 const HIGHEST_MIDI_INSTURMENT_NUMBER = 127;
 for (let i = 0; i <= HIGHEST_MIDI_INSTURMENT_NUMBER; i++) {
-  if (!(midiNumberMapping[i])) {
+  if (!(melodicNumberMapping[i])) {
     continue;
   }
 
-  console.log('    instrument [' + (i - 1) + '] = ' + midiNumberMapping[i].insturmentName + ';');
+  console.log('    instrument [' + (i - 1) + '] = ' + melodicNumberMapping[i].insturmentName + ';');
 }
 
 console.log('}\n');

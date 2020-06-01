@@ -261,6 +261,134 @@ instrument Melodic_Electric_Bass_pick
     sound  = Melodic_Electric_Bass_pickSound;
 }
 
+keymap Percussive_Bass_Drum_1Keymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 36;
+    keyMax      = 36;
+    keyBase     = 36;
+    detune      = 0;
+}
+
+sound Percussive_Bass_Drum_1Sound
+{
+    use ("compressed_samples/036_Percussive_Bass_Drum_1.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_Bass_Drum_1Keymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_Acoustic_SnareKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 38;
+    keyMax      = 38;
+    keyBase     = 38;
+    detune      = 0;
+}
+
+sound Percussive_Acoustic_SnareSound
+{
+    use ("compressed_samples/038_Percussive_Acoustic_Snare.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_Acoustic_SnareKeymap;
+    envelope = defaultenv;
+}
+
+keymap Melodic_Synth_Bass_1Keymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 0;
+    keyMax      = 127;
+    keyBase     = 60;
+    detune      = 0;
+}
+
+sound Melodic_Synth_Bass_1Sound
+{
+    use ("compressed_samples/039_Melodic_Synth_Bass_1.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Melodic_Synth_Bass_1Keymap;
+    envelope = defaultenv;
+}
+
+instrument Melodic_Synth_Bass_1
+{
+    volume = 127;
+    pan    = 64;
+
+    sound  = Melodic_Synth_Bass_1Sound;
+}
+
+keymap Percussive_Low_TomKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 45;
+    keyMax      = 45;
+    keyBase     = 45;
+    detune      = 0;
+}
+
+sound Percussive_Low_TomSound
+{
+    use ("compressed_samples/045_Percussive_Low_Tom.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_Low_TomKeymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_Open_Hi_HatKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 46;
+    keyMax      = 46;
+    keyBase     = 46;
+    detune      = 0;
+}
+
+sound Percussive_Open_Hi_HatSound
+{
+    use ("compressed_samples/046_Percussive_Open_Hi_Hat.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_Open_Hi_HatKeymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_High_Mid_TomKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 48;
+    keyMax      = 48;
+    keyBase     = 48;
+    detune      = 0;
+}
+
+sound Percussive_High_Mid_TomSound
+{
+    use ("compressed_samples/048_Percussive_High_Mid_Tom.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_High_Mid_TomKeymap;
+    envelope = defaultenv;
+}
+
 keymap Melodic_String_Ensemble_1Keymap
 {
     velocityMin = 0;
@@ -289,6 +417,46 @@ instrument Melodic_String_Ensemble_1
     sound  = Melodic_String_Ensemble_1Sound;
 }
 
+keymap Percussive_Crash_Cymbal_1Keymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 49;
+    keyMax      = 49;
+    keyBase     = 49;
+    detune      = 0;
+}
+
+sound Percussive_Crash_Cymbal_1Sound
+{
+    use ("compressed_samples/049_Percussive_Crash_Cymbal_1.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_Crash_Cymbal_1Keymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_High_TomKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 50;
+    keyMax      = 50;
+    keyBase     = 50;
+    detune      = 0;
+}
+
+sound Percussive_High_TomSound
+{
+    use ("compressed_samples/050_Percussive_High_Tom.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_High_TomKeymap;
+    envelope = defaultenv;
+}
+
 keymap Melodic_Synth_Strings_1Keymap
 {
     velocityMin = 0;
@@ -315,6 +483,26 @@ instrument Melodic_Synth_Strings_1
     pan    = 64;
 
     sound  = Melodic_Synth_Strings_1Sound;
+}
+
+keymap Percussive_Ride_Cymbal_1Keymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 51;
+    keyMax      = 51;
+    keyBase     = 51;
+    detune      = 0;
+}
+
+sound Percussive_Ride_Cymbal_1Sound
+{
+    use ("compressed_samples/051_Percussive_Ride_Cymbal_1.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_Ride_Cymbal_1Keymap;
+    envelope = defaultenv;
 }
 
 keymap Melodic_Synth_VoiceKeymap
@@ -401,6 +589,26 @@ instrument Melodic_Trombone
     sound  = Melodic_TromboneSound;
 }
 
+keymap Percussive_High_BongoKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 60;
+    keyMax      = 60;
+    keyBase     = 60;
+    detune      = 0;
+}
+
+sound Percussive_High_BongoSound
+{
+    use ("compressed_samples/060_Percussive_High_Bongo.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_High_BongoKeymap;
+    envelope = defaultenv;
+}
+
 keymap Melodic_French_HornKeymap
 {
     velocityMin = 0;
@@ -429,6 +637,26 @@ instrument Melodic_French_Horn
     sound  = Melodic_French_HornSound;
 }
 
+keymap Percussive_Low_BongoKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 61;
+    keyMax      = 61;
+    keyBase     = 61;
+    detune      = 0;
+}
+
+sound Percussive_Low_BongoSound
+{
+    use ("compressed_samples/061_Percussive_Low_Bongo.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_Low_BongoKeymap;
+    envelope = defaultenv;
+}
+
 keymap Melodic_Alto_SaxKeymap
 {
     velocityMin = 0;
@@ -455,6 +683,66 @@ instrument Melodic_Alto_Sax
     pan    = 64;
 
     sound  = Melodic_Alto_SaxSound;
+}
+
+keymap Percussive_CabasaKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 69;
+    keyMax      = 69;
+    keyBase     = 69;
+    detune      = 0;
+}
+
+sound Percussive_CabasaSound
+{
+    use ("compressed_samples/069_Percussive_Cabasa.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_CabasaKeymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_MaracasKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 70;
+    keyMax      = 70;
+    keyBase     = 70;
+    detune      = 0;
+}
+
+sound Percussive_MaracasSound
+{
+    use ("compressed_samples/070_Percussive_Maracas.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_MaracasKeymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_ShakerKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 82;
+    keyMax      = 82;
+    keyBase     = 82;
+    detune      = 0;
+}
+
+sound Percussive_ShakerSound
+{
+    use ("compressed_samples/082_Percussive_Shaker.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_ShakerKeymap;
+    envelope = defaultenv;
 }
 
 keymap Melodic_Lead_6_VoiceKeymap
@@ -569,9 +857,30 @@ instrument Melodic_FX_4_Atmosphere
     sound  = Melodic_FX_4_AtmosphereSound;
 }
 
+instrument Percussion_Kit
+{
+    volume = 127;
+    pan    = 64;
+
+    sound = Percussive_Bass_Drum_1Sound;
+    sound = Percussive_Acoustic_SnareSound;
+    sound = Percussive_Low_TomSound;
+    sound = Percussive_Open_Hi_HatSound;
+    sound = Percussive_High_Mid_TomSound;
+    sound = Percussive_Crash_Cymbal_1Sound;
+    sound = Percussive_High_TomSound;
+    sound = Percussive_Ride_Cymbal_1Sound;
+    sound = Percussive_High_BongoSound;
+    sound = Percussive_Low_BongoSound;
+    sound = Percussive_CabasaSound;
+    sound = Percussive_MaracasSound;
+    sound = Percussive_ShakerSound;
+}
+
 bank SongBank 
 {
     sampleRate = 32000;
+    percussionDefault = Percussion_Kit;
 
     instrument [2] = Melodic_Electric_Grand_Piano;
     instrument [3] = Melodic_Honky_Tonk_Piano;
@@ -582,6 +891,7 @@ bank SongBank
     instrument [20] = Melodic_Reed_Organ;
     instrument [24] = Melodic_Acoustic_Guitar_Nylon;
     instrument [34] = Melodic_Electric_Bass_pick;
+    instrument [38] = Melodic_Synth_Bass_1;
     instrument [48] = Melodic_String_Ensemble_1;
     instrument [50] = Melodic_Synth_Strings_1;
     instrument [54] = Melodic_Synth_Voice;
