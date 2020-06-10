@@ -36,12 +36,11 @@ void soundSetup(void) {
   nuAuSeqPlayerSeqSet(_dm_seqSegmentRomStart);
 }
 
+
+
 void initAudio(void)
 {
-    nuAuInitEx();
-
-    // Register the PRENMI function.
-    nuAuPreNMIFuncSet(nuAuPreNMIProc);
+    nuAuInit();
 }
 
 /*------------------------

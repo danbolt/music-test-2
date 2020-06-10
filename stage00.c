@@ -17,6 +17,9 @@ static float triPos_y; /* The display position-Y */
 
 extern int note;
 
+
+  static int seqNo;
+
 void shadetri(Dynamic* dynamicp);
 
 /* The initialization of stage 0 */
@@ -25,6 +28,8 @@ void initStage00(void)
   triPos_x = 0.0;
   triPos_y = 0.0;
   theta = 0.0;
+
+  seqNo = 0;
 }
 
 /* Make the display list and activate the task */
@@ -72,6 +77,10 @@ void makeDL00(void)
       sprintf(conbuf,"note: %d",note);
       nuDebConCPuts(0, conbuf);
 
+      nuDebConTextPos(0,12,24);
+      sprintf(conbuf,"Press the B button");
+      nuDebConCPuts(0, conbuf);
+
       // nuDebConTextPos(0,12,24);
       // sprintf(conbuf,"soundId=%hd",soundId);
       // nuDebConCPuts(0, conbuf);
@@ -90,9 +99,8 @@ void makeDL00(void)
 }
 
 void soundCheck(void) {
-  static int seqNo = 0;
 
-  if((contdata[0].trigger & A_BUTTON)) {
+  if((contdata[0].trigger & B_BUTTON)) {
     if (seqNo == 0) {
       nuAuSeqPlayerStop(0);
       nuAuSeqPlayerSetNo(0, 0);
@@ -123,7 +131,6 @@ void updateGame00(void)
   if(contdata[0].trigger & A_BUTTON)
     {
       vel = -vel;
-      osSyncPrintf("A button Push\n");
     }
 
   /* Rotate fast while pushing the B button */
