@@ -51,8 +51,15 @@ beginseg
     include "bgm/dm/song.sbk"  
 endseg
 
+beginseg
+    name "pol_tex"
+    flags RAW
+    include "tex/test.png.bin"
+endseg
+
 beginwave
 	name	"nu1"
 	include	"code"
+    include "pol_tex"
 endwave
 

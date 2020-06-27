@@ -9,7 +9,7 @@
 #include <nusys.h>
 #include "main.h"
 #include "audio.h"
-
+#include "rom2ram.h"
 
 #include <nualsgi_n.h>
 
@@ -53,6 +53,9 @@ void mainproc(void)
 
   initAudio();
   soundSetup();
+
+  /* Put the texture into ram */
+  Rom2Ram((void*)_pol_texSegmentRomStart, (void*)_codeSegmentEnd, (_pol_texSegmentRomEnd - _pol_texSegmentRomStart));
 
   /* The initialization of the controller manager  */
   contPattern = nuContInit();
