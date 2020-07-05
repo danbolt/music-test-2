@@ -55,7 +55,7 @@ void mainproc(void)
   soundSetup();
 
   /* Put the texture into ram */
-  Rom2Ram((void*)_pol_texSegmentRomStart, (void*)_codeSegmentEnd, (_pol_texSegmentRomEnd - _pol_texSegmentRomStart));
+  Rom2Ram((void*)_pol_texSegmentRomStart, (void*)0x80200000, (_pol_texSegmentRomEnd - _pol_texSegmentRomStart));
 
   /* The initialization of the controller manager  */
   contPattern = nuContInit();
