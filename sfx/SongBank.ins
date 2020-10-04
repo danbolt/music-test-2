@@ -1,0 +1,214 @@
+envelope defaultenv
+{
+    attackTime    = 0;
+    attackVolume  = 127;
+    decayTime   = 500000;
+    decayVolume   = 100;
+    releaseTime   = 200000;
+    
+}
+
+
+keymap Percussive_absorb_note_0Keymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 10;
+    keyMax      = 10;
+    keyBase     = 10;
+    detune      = 0;
+}
+
+sound Percussive_absorb_note_0Sound
+{
+    use ("compressed_samples/000_Percussive_absorb_note_0.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_absorb_note_0Keymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_absorb_note_1Keymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 11;
+    keyMax      = 11;
+    keyBase     = 11;
+    detune      = 0;
+}
+
+sound Percussive_absorb_note_1Sound
+{
+    use ("compressed_samples/001_Percussive_absorb_note_1.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_absorb_note_1Keymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_absorb_note_2Keymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 12;
+    keyMax      = 12;
+    keyBase     = 12;
+    detune      = 0;
+}
+
+sound Percussive_absorb_note_2Sound
+{
+    use ("compressed_samples/002_Percussive_absorb_note_2.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_absorb_note_2Keymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_absorb_note_3Keymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 13;
+    keyMax      = 13;
+    keyBase     = 13;
+    detune      = 0;
+}
+
+sound Percussive_absorb_note_3Sound
+{
+    use ("compressed_samples/003_Percussive_absorb_note_3.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_absorb_note_3Keymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_attack_landKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 14;
+    keyMax      = 14;
+    keyBase     = 14;
+    detune      = 0;
+}
+
+sound Percussive_attack_landSound
+{
+    use ("compressed_samples/004_Percussive_attack_land.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_attack_landKeymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_fadeinKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 15;
+    keyMax      = 15;
+    keyBase     = 15;
+    detune      = 0;
+}
+
+sound Percussive_fadeinSound
+{
+    use ("compressed_samples/005_Percussive_fadein.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_fadeinKeymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_fadeoutKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 16;
+    keyMax      = 16;
+    keyBase     = 16;
+    detune      = 0;
+}
+
+sound Percussive_fadeoutSound
+{
+    use ("compressed_samples/006_Percussive_fadeout.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_fadeoutKeymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_jumpKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 17;
+    keyMax      = 17;
+    keyBase     = 17;
+    detune      = 0;
+}
+
+sound Percussive_jumpSound
+{
+    use ("compressed_samples/007_Percussive_jump.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_jumpKeymap;
+    envelope = defaultenv;
+}
+
+keymap Percussive_sword_outKeymap
+{
+    velocityMin = 0;
+    velocityMax = 127;
+    keyMin      = 18;
+    keyMax      = 18;
+    keyBase     = 18;
+    detune      = 0;
+}
+
+sound Percussive_sword_outSound
+{
+    use ("compressed_samples/008_Percussive_sword_out.aifc");
+    
+    pan    = 64;
+    volume = 127;
+    keymap = Percussive_sword_outKeymap;
+    envelope = defaultenv;
+}
+
+instrument Percussion_Kit
+{
+    volume = 127;
+    pan    = 64;
+
+    sound = Percussive_absorb_note_0Sound;
+    sound = Percussive_absorb_note_1Sound;
+    sound = Percussive_absorb_note_2Sound;
+    sound = Percussive_absorb_note_3Sound;
+    sound = Percussive_attack_landSound;
+    sound = Percussive_fadeinSound;
+    sound = Percussive_fadeoutSound;
+    sound = Percussive_jumpSound;
+    sound = Percussive_sword_outSound;
+}
+
+bank SongBank 
+{
+    sampleRate = 32000;
+    instrument [0] = Percussion_Kit;
+
+}
+
