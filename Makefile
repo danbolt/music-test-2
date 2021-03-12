@@ -16,7 +16,7 @@ CC  = gcc
 LD  = ld
 MAKEROM = mild
 
-NUAUDIOLIB = -lnualsgi_n_d -lgn_audio_d
+NUAUDIOLIB = -lnualsgi_n -lgn_audio
 
 LCDEFS =	-DNU_DEBUG -DF3DEX_GBI_2
 LCINCS =	-I. -I$(NUSYSINCDIR) -I$(ROOT)/usr/include/PR

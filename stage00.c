@@ -106,13 +106,13 @@ void soundCheck(void) {
 
   if ((contdata[0].trigger & A_BUTTON) && (playerState == 0)) {
     nuAuSeqPlayerStop(0);
-    nuAuSeqPlayerSetNo(0, 0);
+    nuAuSeqPlayerSetNo(0, 2);
     nuAuSeqPlayerPlay(0);
 
     playerState = 1;
   } else if ((contdata[0].trigger & B_BUTTON) && (playerState == 1)) {
     nuAuSeqPlayerStop(0);
-    nuAuSeqPlayerSetNo(0, 0);
+    nuAuSeqPlayerSetNo(0, 2);
 
     playerState = 0;
   }
