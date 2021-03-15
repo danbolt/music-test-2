@@ -657,6 +657,16 @@ sound Percussive_Low_BongoSound
     envelope = defaultenv;
 }
 
+envelope Melodic_Alto_SaxEnvelope
+{
+    attackTime    = 109000;
+    attackVolume  = 127;
+    decayTime   = 8100;
+    decayVolume   = 100;
+    releaseTime   = 0;
+    
+}
+
 keymap Melodic_Alto_SaxKeymap
 {
     velocityMin = 0;
@@ -674,7 +684,7 @@ sound Melodic_Alto_SaxSound
     pan    = 64;
     volume = 127;
     keymap = Melodic_Alto_SaxKeymap;
-    envelope = defaultenv;
+    envelope = Melodic_Alto_SaxEnvelope;
 }
 
 instrument Melodic_Alto_Sax
